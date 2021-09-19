@@ -10,8 +10,8 @@ Vagrant compatible Ubuntu docker images
 > you wouldn't understand, because i don't
 
 ## Useful links
-https://www.docker.com/blog/getting-started-with-docker-for-arm-on-linux/
-https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
+- https://www.docker.com/blog/getting-started-with-docker-for-arm-on-linux/
+- https://medium.com/platformer-blog/lets-publish-a-docker-image-to-docker-hub-using-a-github-action-f0b17e5cceb3
 
 ## Verify docker buildx
 ```
