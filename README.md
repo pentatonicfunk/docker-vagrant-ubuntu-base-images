@@ -2,6 +2,10 @@
 
 Vagrant compatible **Ubuntu** docker images.
 
+Heavily inspired by: https://github.com/tknerr/vagrant-docker-baseimages.
+
+This repo just add 20.04 and add arm64 as target arch.
+
 Most of the times you have nothing to do with this repo, you might actually looking
 for [docker image](https://hub.docker.com/r/pentatonicfunk/vagrant-ubuntu-base-images/tags) instead
 
