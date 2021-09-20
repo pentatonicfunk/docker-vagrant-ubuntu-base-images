@@ -3,7 +3,7 @@
 Vagrant compatible **Ubuntu** docker images.
 
 Most of the times you have nothing to do with this repo, you might actually looking
-for [docker image](https://hub.docker.com/repository/docker/pentatonicfunk/vagrant-ubuntu-base-images) instead
+for [docker image](https://hub.docker.com/r/pentatonicfunk/vagrant-ubuntu-base-images/tags) instead
 
 ## Available Versions / tags
 
