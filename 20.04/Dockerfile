@@ -1,6 +1,5 @@
 FROM ubuntu:20.04
 
-# trigger 1
 LABEL maintainer="pentatonicfunk@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
