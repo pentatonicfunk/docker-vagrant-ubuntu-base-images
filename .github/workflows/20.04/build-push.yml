@@ -49,42 +49,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Docker meta
-        id: docker_meta
-        uses: docker/metadata-action@v3.3.0
-        with:
-          # list of Docker images to use as base name for tags
-          images: |
-            pentatonicfunk/vagrant-ubuntu-base-images-action-test
-          flavor: |
-            latest=false
-          tags: |
-            type=raw,value=latest
       - # this will build the images, once per platform,
         # then push to both Docker Hub
-        name: Docker Build and Push 18.04
-        id: docker_build_and_push
-        uses: docker/build-push-action@v2
-        with:
-          context: 18.04
-          platforms: linux/amd64,linux/arm64
-          file: 18.04/Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          cache-from: type=local,src=/tmp/.buildx-cache-new
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
-          # don't push during a pull_request, only build
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: pentatonicfunk/vagrant-ubuntu-base-images-action-test:18.04
-      - # Temp fix
-        # https://github.com/docker/build-push-action/issues/252
-        # https://github.com/moby/buildkit/issues/1896
-        name: Move cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-      - name: Show image digest
-        run: echo ${{ steps.docker_build_and_push.outputs.digest }}
-      - name: Docker Build and Push 20.04
+        name: Docker Build and Push 20.04
         id: docker_build_and_push
         uses: docker/build-push-action@v2
         with:
