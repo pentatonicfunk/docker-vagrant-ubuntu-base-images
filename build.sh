@@ -20,8 +20,13 @@ for image_version in "${image_versions[@]}"; do
   fi
 done
 
+# delete previous builder instance
+docker buildx rm $DOCKER_IMAGE_BASE_NAME
+
 ### QEMU ?
 docker run --rm --privileged docker/binfmt:$DOCKER_QEMU_LATEST
+## more arch ?
+docker run --privileged --rm tonistiigi/binfmt --install all
 
 ## okay to be error
 docker buildx create --name $DOCKER_IMAGE_BASE_NAME
@@ -42,7 +47,8 @@ for image_version in "${image_versions[@]}"; do
   echo "[+] Starting routine for $image_version"
 
   echo "[*] Building and pushing image"
-  docker buildx build --no-cache --platform linux/arm64,linux/amd64 -t $DOCKER_ID/$DOCKER_IMAGE_BASE_NAME:$image_version ./$image_version --push
+  # honestly dont know arm64 vs arm64/v8 difference, me sad
+  docker buildx build --no-cache --platform linux/arm64/v8,linux/amd64 -t $DOCKER_ID/$DOCKER_IMAGE_BASE_NAME:$image_version ./$image_version --push
   # docker buildx build --platform linux/arm64,linux/amd64 -t pentatonicfunk/vagrant-ubuntu-base-images:$image_version ./$image_version --push
 
   ## MANUAL TAG and PUSH
