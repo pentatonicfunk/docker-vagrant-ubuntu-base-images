@@ -1,5 +1,5 @@
 ---
-name: Build and Push Image
+name: Build and Push Image 20.04
 
 on:
   # we want pull requests so we can build(test) but not push to image registry
