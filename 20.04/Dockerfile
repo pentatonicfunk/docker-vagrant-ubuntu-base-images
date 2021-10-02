@@ -5,13 +5,22 @@ LABEL maintainer="pentatonicfunk@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # install common dependencies
+# ca-certificates usually needed by vagrant to download stuff
+# some others are just attempt to speed the provision up
 RUN apt-get update && apt-get install -y \
     locales \
     curl \
     lsb-release \
     openssh-server \
     sudo \
-    python
+    python \
+    ca-certificates \
+    gnupg2 \
+    software-properties-common \
+    apt-utils
+
+## in case ca-cert already installed, force upgrade ( to get latest chain )
+RUN apt-get upgrade ca-certificates
 
 # ensure we have the en_US.UTF-8 locale available
 RUN locale-gen en_US.UTF-8

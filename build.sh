@@ -34,7 +34,7 @@ echo "[?] Verify output above, make sure platform you wanted exists, such as arm
 
 echo "==========================================="
 echo "[+] Pruning Build Cache"
-docker builder prune \-f
+docker builder prune -f
 
 for image_version in "${image_versions[@]}"; do
   :
