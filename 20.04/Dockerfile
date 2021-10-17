@@ -17,10 +17,14 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     gnupg2 \
     software-properties-common \
-    apt-utils
+    apt-utils \
+    iputils-ping \
+    net-tools \
+    nano \
+    less
 
 ## in case ca-cert already installed, force upgrade ( to get latest chain )
-RUN apt-get upgrade ca-certificates
+RUN apt-get upgrade -y ca-certificates
 
 # ensure we have the en_US.UTF-8 locale available
 RUN locale-gen en_US.UTF-8
