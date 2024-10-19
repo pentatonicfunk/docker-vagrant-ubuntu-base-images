@@ -34,7 +34,7 @@ RUN locale-gen en_US.UTF-8
 # background story: https://bugs.launchpad.net/cloud-images/+bug/2005129 https://askubuntu.com/questions/1513927/ubuntu-24-04-docker-images-now-includes-user-ubuntu-with-uid-gid-1000
 RUN usermod -l vagrant ubuntu
 RUN usermod -d /home/vagrant -m vagrant
-RUN usermod -s /bin/bash -m vagrant
+RUN usermod -s /bin/bash vagrant
 
 # setup the vagrant user to comply with vagrant's expectations
 RUN echo vagrant:vagrant | chpasswd \
