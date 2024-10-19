@@ -7,13 +7,14 @@ ENV DEBIAN_FRONTEND noninteractive
 # install common dependencies
 # ca-certificates usually needed by vagrant to download stuff
 # some others are just attempt to speed the provision up
+# python-is-python3: https://askubuntu.com/a/1455214, python3 is default python in 22.04
 RUN apt-get update && apt-get install -y \
     locales \
     curl \
     lsb-release \
     openssh-server \
     sudo \
-    python \
+    python-is-python3 \
     ca-certificates \
     gnupg2 \
     software-properties-common \
