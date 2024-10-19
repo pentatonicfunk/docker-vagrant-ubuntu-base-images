@@ -38,6 +38,10 @@ RUN if ! getent passwd vagrant; then useradd -d /home/vagrant -m -s /bin/bash va
     && echo 'vagrant ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/vagrant \
     && chmod 0440 /etc/sudoers.d/vagrant
 
+# set vagrant user as default ( experimental, has unknown implications )
+# background story: https://bugs.launchpad.net/cloud-images/+bug/2005129 https://askubuntu.com/questions/1513927/ubuntu-24-04-docker-images-now-includes-user-ubuntu-with-uid-gid-1000
+RUN usermod -l vagrant ubuntu
+
 # add the vagrant insecure public key
 RUN mkdir -p /home/vagrant/.ssh \
     && chmod 0700 /home/vagrant/.ssh \
