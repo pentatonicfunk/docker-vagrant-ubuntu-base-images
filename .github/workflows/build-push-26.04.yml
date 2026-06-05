@@ -1,5 +1,5 @@
 ---
-name: Build and Push Image 24.04
+name: Build and Push Image 26.04
 
 on:
   # we want pull requests so we can build(test) but not push to image registry
@@ -51,19 +51,19 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - # this will build the images, once per platform,
         # then push to both Docker Hub
-        name: Docker Build and Push 24.04
+        name: Docker Build and Push 26.04
         id: docker_build_and_push
         uses: docker/build-push-action@v6
         with:
-          context: 24.04
+          context: 26.04
           platforms: linux/amd64,linux/arm64
-          file: 24.04/Dockerfile
+          file: 26.04/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           cache-from: type=local,src=/tmp/.buildx-cache-new
           cache-to: type=local,dest=/tmp/.buildx-cache-new
           # don't push during a pull_request, only build
           push: ${{ github.event_name != 'pull_request' }}
-          tags: pentatonicfunk/vagrant-ubuntu-base-images:24.04
+          tags: pentatonicfunk/vagrant-ubuntu-base-images:26.04
       - # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
